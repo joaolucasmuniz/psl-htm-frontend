@@ -4,6 +4,8 @@ import Login from './pages/login/login';
 import ListClients from './pages/clients/clients';
 import Layout from './componentes/layout';
 import ClientDetails from './pages/clientDetails/clientDetails';
+import Profile from './pages/profile/profile';
+import CreateClient from './pages/createClient/createClient';
 
 function App() {
   return (
@@ -13,6 +15,8 @@ function App() {
       <Route path="/clients/:id" element={ <ClientDetails /> } />
       <Route element={ <Layout /> }>
         <Route path="/clients" element={ <ListClients /> } />
+        <Route path="/profile" element={ <Profile /> } />
+        <Route path="/create-client" element={ <CreateClient /> } />
       </Route>
     </Routes>
   );
