@@ -4,11 +4,17 @@ export type CardProps = {
 };
 
 export type TClientDetails = {
-  id: number,
+  id?: number,
   access_level: number,
   address: string,
   email: string,
   name: string,
   phone: string,
   postalcode: string,
+};
+
+export type TUser = {
+  id : number,
+  username: string,
+  access_level: number,
 };
