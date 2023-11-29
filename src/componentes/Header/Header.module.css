@@ -1,0 +1,7 @@
+.navButton{
+  pointer-events: auto;
+}
+.active{
+  border-radius: 0px !important;
+  border-bottom: 0.2rem solid orangered !important;
+}
