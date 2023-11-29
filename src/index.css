@@ -1,3 +1,5 @@
+@import '/node_modules/bootstrap/dist/css/bootstrap.min.css';
+
 :root{
   --color-primary: #ff4500;
   --background-color: #f5f5f5;
