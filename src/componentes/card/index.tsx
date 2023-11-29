@@ -8,7 +8,7 @@ function Card(props : CardProps) {
   const { id, name } = props;
 
   const handleClick = () => {
-    navigate(`/client/${id}`);
+    navigate(`/clients/${id}`);
   };
 
   return (
