@@ -4,9 +4,12 @@ import { urlBase } from '../../helpers/urlBase';
 import Card from '../../componentes/card';
 
 import styles from './clients.module.css';
+import { ErrorAlert } from '../../utils/alert';
+import Loading from '../../componentes/loading ';
 
 function ListClients() {
   const [clients, setClients] = useState([]);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -14,27 +17,32 @@ function ListClients() {
       const token = localStorage.getItem('token');
       if (!token) {
         navigate('/login');
-      }
-      const response = await fetch(`https://${urlBase}/clients`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          authorization: token as string,
-        },
-      });
+      } else {
+        setLoading(true);
+        const response = await fetch(`https://${urlBase}/clients`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            authorization: token as string,
 
-      const data = await response.json();
-      if (data.error) {
-        alert(data.error);
-      }
-      if (data.message) {
-        alert(data.message);
-      }
+          },
+        });
 
-      setClients(data);
+        const data = await response.json();
+        setLoading(false);
+
+        if (data.message) {
+          ErrorAlert(data.message);
+          navigate('/login');
+        }
+
+        setClients(data);
+      }
     };
     init();
   }, []);
+
+  if (loading) return <Loading />;
 
   return (
     <div>
