@@ -12,24 +12,20 @@ function Card(props : CardProps) {
   };
 
   return (
-
     <button
       type="button"
       onClick={ handleClick }
-      className={ styles.card }
+      className={ styles.cardContainer }
     >
       <div className={ styles.cardHeader }>
-        <h4 data-testid="cardTitle" className="card-title">{ name }</h4>
+        <h4 className="card-title">{ name }</h4>
       </div>
       <div className={ styles.cardBody }>
-        <p data-testid="cardText" className="card-text">
-          Id:
-          {' '}
-          { id }
+        <p className="card-text">
+          {`ID: ${id}`}
         </p>
       </div>
     </button>
-
   );
 }
 
