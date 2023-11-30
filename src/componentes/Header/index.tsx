@@ -27,7 +27,7 @@ function Header() {
       id: 'Perfil', path: '/profile',
     },
     {
-      id: 'Criar Clientes', path: '/create-client',
+      id: 'Cadastrar Clientes', path: '/create-client',
     },
   ];
 
