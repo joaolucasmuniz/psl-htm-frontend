@@ -26,7 +26,7 @@ function CreateClient() {
 
   const validate = (name: string, value: string) => {
     const regex = {
-      name: /^[a-zA-Z ]{3,}$/,
+      name: /^[A-Za-zÀ-ÿ -]+(?: [A-Za-zÀ-ÿ -]+)*$/,
       accessLevel: /^[0-9]{1,}$/,
       postalcode: /^[0-9]{5}-[0-9]{3}$/,
       email: /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+(\.[a-z]+)?$/i,
