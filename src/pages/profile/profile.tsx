@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { TUser } from '../../types/types';
 import { urlBase } from '../../helpers/urlBase';
 import Loading from '../../componentes/loading ';
+import { ErrorAlert } from '../../utils/alert';
 
 function Profile() {
   const [loading, setLoading] = useState(true);
@@ -25,6 +26,10 @@ function Profile() {
       });
       const data = await response.json();
       setLoading(false);
+      if (data.error) {
+        ErrorAlert(data.error);
+        navigate('/login');
+      }
       setUser(data[0]);
     };
     fetchUser();
@@ -40,14 +45,26 @@ function Profile() {
   }
 
   return (
-    <div>
-      <p>{`Nome: ${user.username}`}</p>
-      <p>{`Nivel de acesso: ${user.access_level}`}</p>
-      <button
-        onClick={ () => handleLogout() }
-      >
-        Sair
-      </button>
+    <div className="container d-flex align-items-center flex-column mt-5">
+      <div className="card w-75">
+        <div className="card-body">
+          <p className="card-text">
+            <b>Nome:</b>
+            {' '}
+            {user.username}
+          </p>
+          <p className="card-text">
+            <b>Nível de Acesso:</b>
+            {' '}
+            {user.access_level}
+          </p>
+        </div>
+        <div className="card-footer d-flex justify-content-center">
+          <button className="btn btn-danger w-50" onClick={ () => handleLogout() }>
+            Sair
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
