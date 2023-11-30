@@ -1,9 +1,11 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { TCreateClient } from '../../types/types';
 import { urlBase } from '../../helpers/urlBase';
 import { ErrorAlert, SuccessAlert } from '../../utils/alert';
 
 function CreateClient() {
+  const navigate = useNavigate();
   const [newClient, setNewClient] = useState<TCreateClient>({
     name: '',
     accessLevel: 0,
@@ -69,6 +71,7 @@ function CreateClient() {
       ErrorAlert(response.error);
     } else if (response.message) {
       SuccessAlert(response.message);
+      navigate('/clients');
     } else {
       ErrorAlert('Erro ao criar cliente');
     }
