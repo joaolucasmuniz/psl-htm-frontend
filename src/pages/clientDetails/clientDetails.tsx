@@ -65,6 +65,10 @@ function ClientDetails() {
     }
   };
 
+  const handleEdit = async () => {
+    navigate(`/clients/edit/${id}`);
+  };
+
   if (loading) return <Loading />;
 
   return (
@@ -105,7 +109,7 @@ function ClientDetails() {
         </div>
       </section>
       <div className="d-flex flex-column align-items-center mt-3 w-75">
-        <button className="btn btn-primary mb-2 w-50">
+        <button className="btn btn-primary mb-2 w-50" onClick={ handleEdit }>
           Editar
         </button>
         <button className="btn btn-danger mb-2 w-50" onClick={ handleDelete }>
