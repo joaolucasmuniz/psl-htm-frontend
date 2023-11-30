@@ -31,8 +31,8 @@ function ListClients() {
         const data = await response.json();
         setLoading(false);
 
-        if (data.message) {
-          ErrorAlert(data.message);
+        if (data.error) {
+          ErrorAlert(data.error);
           navigate('/login');
         }
 
@@ -45,8 +45,7 @@ function ListClients() {
   if (loading) return <Loading />;
 
   return (
-    <div>
-      <h1>Clientes</h1>
+    <section>
       <div className={ styles.container }>
         {clients && clients.map((client: any) => (
           <Card
@@ -56,7 +55,7 @@ function ListClients() {
           />
         ))}
       </div>
-    </div>
+    </section>
   );
 }
 
