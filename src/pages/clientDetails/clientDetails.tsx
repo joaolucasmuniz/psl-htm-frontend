@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Navigate, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { urlBase } from '../../helpers/urlBase';
 import { TClientDetails } from '../../types/types';
 import Loading from '../../componentes/loading ';
@@ -68,23 +68,47 @@ function ClientDetails() {
   if (loading) return <Loading />;
 
   return (
-    <div>
-      <h1>{client.name}</h1>
-      <div>
-        <p>{`Nome: ${client.name}`}</p>
-        <p>{`Email: ${client.email}`}</p>
-        <p>{`Telefone: ${client.phone}`}</p>
-        <p>{`Endereço: ${client.address}`}</p>
-        <p>{`Codigo Postal: ${client.postalcode}`}</p>
-        <p>{`Nível de acesso: ${client.access_level}`}</p>
-      </div>
-      <div>
-        <button>
+    <div className="container d-flex flex-column align-items-center mt-5">
+      <h1 className="display-4 mb-4">{client.name}</h1>
+      <section className="card w-75">
+        <div className="card-body">
+          <p className="card-text">
+            <b>Nome:</b>
+            {' '}
+            {client.name}
+          </p>
+          <p className="card-text">
+            <b>Email:</b>
+            {' '}
+            {client.email}
+          </p>
+          <p className="card-text">
+            <b>Telefone:</b>
+            {' '}
+            {client.phone}
+          </p>
+          <p className="card-text">
+            <b>Endereço:</b>
+            {' '}
+            {client.address}
+          </p>
+          <p className="card-text">
+            <b>Código Postal:</b>
+            {' '}
+            {client.postalcode}
+          </p>
+          <p className="card-text">
+            <b>Nível de Acesso:</b>
+            {' '}
+            {client.access_level}
+          </p>
+        </div>
+      </section>
+      <div className="d-flex flex-column align-items-center mt-3 w-75">
+        <button className="btn btn-primary mb-2 w-50">
           Editar
         </button>
-        <button
-          onClick={ handleDelete }
-        >
+        <button className="btn btn-danger mb-2 w-50" onClick={ handleDelete }>
           Excluir
         </button>
       </div>
