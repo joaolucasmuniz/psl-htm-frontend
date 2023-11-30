@@ -12,9 +12,9 @@ function App() {
 
     <Routes>
       <Route path="/login" element={ <Login /> } />
-      <Route path="/clients/:id" element={ <ClientDetails /> } />
       <Route element={ <Layout /> }>
         <Route path="/clients" element={ <ListClients /> } />
+        <Route path="/clients/:id" element={ <ClientDetails /> } />
         <Route path="/profile" element={ <Profile /> } />
         <Route path="/create-client" element={ <CreateClient /> } />
       </Route>
